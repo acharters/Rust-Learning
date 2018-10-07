@@ -2,6 +2,7 @@ extern crate rand;
 
 use std::io;
 use rand::Rng;
+use std::cmp::Ordering;
 
 fn main() {
     //generate secret number
@@ -12,5 +13,13 @@ fn main() {
     let mut guess = String::new();
     io::stdin().read_line(&mut guess)
         .expect("Couldn't read line!");
+    let guess: i32 = guess.trim().parse()
+        .expect("This is not a number!");
     println!("your number: {}", guess);
+    //check to see if the user's guess is too big or too small
+    match guess.cmp(&secret_number){
+        Ordering::Less => println!("Guess is too small."),
+        Ordering::Greater => println!("Guess is too big."),
+        Ordering::Equal => println!("This is the correct number!")
+    }
 }
