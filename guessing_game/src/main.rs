@@ -14,14 +14,20 @@ fn main() {
         let mut guess = String::new();
         io::stdin().read_line(&mut guess)
             .expect("Couldn't read line!");
-        let guess: i32 = guess.trim().parse()
-            .expect("This is not a number!");
+        let guess: i32 = match guess.trim().parse() {
+            Ok(number) => number,
+            Err(_) => {
+                println!("This is not valid input. Try again.");
+                continue;
+            }
+        };
         println!("your number: {}", guess);
         //check to see if the user's guess is too big or too small
-        match guess.cmp(&secret_number){
+        match guess.cmp(&secret_number) {
             Ordering::Less => println!("Guess is too small."),
             Ordering::Greater => println!("Guess is too big."),
-            Ordering::Equal => { println!("This is the correct number!");
+            Ordering::Equal => {
+                println!("This is the correct number!");
                 break;
             }
         }
