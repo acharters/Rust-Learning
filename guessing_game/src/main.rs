@@ -1,18 +1,19 @@
 extern crate rand;
 
-use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
+use std::io;
 
 fn main() {
     //generate secret number
     let secret_number = rand::thread_rng().gen_range(1, 101);
     println!("The secret number is: {}", secret_number); //for debugging
-    //loop until user guesses correctly
+                                                         //loop until user guesses correctly
     loop {
         println!("Guess a number: ");
         let mut guess = String::new();
-        io::stdin().read_line(&mut guess)
+        io::stdin()
+            .read_line(&mut guess)
             .expect("Couldn't read line!");
         let guess: i32 = match guess.trim().parse() {
             Ok(number) => number,
