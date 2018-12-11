@@ -19,6 +19,13 @@ impl Rectangle {
         }
     }
 
+    fn make_square(x: i32) -> Rectangle {
+        Rectangle {
+            width: x,
+            height: x
+        }
+    }
+
 }
 
 fn main() {
@@ -30,8 +37,10 @@ fn main() {
         width: 70,
         ..rect1
     };
+    let sq = Rectangle::make_square(5);
     println!("Rect1: {:#?}\nRect2: {:?}", rect1, rect2);
     println!("Hold value: {}", rect1.can_hold(&rect2));
+    println!("Square: {:#?}", sq);
 }
 
 
