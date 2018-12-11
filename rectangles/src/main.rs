@@ -1,10 +1,4 @@
 
-#[derive(Debug)]
-struct Rectangle {
-    width: i32,
-    height: i32
-}
-
 impl Rectangle {
 
     fn area(&self) -> i32 {
@@ -26,6 +20,12 @@ impl Rectangle {
         }
     }
 
+}
+
+#[derive(Debug)]
+struct Rectangle {
+    width: i32,
+    height: i32
 }
 
 fn main() {
