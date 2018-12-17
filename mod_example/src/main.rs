@@ -1,4 +1,6 @@
 
+mod extern_mod;
+
 mod first_layer {
     pub mod pub_mod {
         pub fn pub_fun() {
@@ -22,7 +24,10 @@ use first_layer::pub_mod;
 fn main() {
     first_layer::pub_mod::pub_fun();
     pub_mod::pub_fun();
+    extern_mod::print_something();
+    //should only work if extern mod uses a pub mod statement to bring second layer into scope
+    extern_mod::second_layer::more_printing();
     //these functions shouldn't work
-    pub_mod::priv_fun();
-    first_layer::priv_mod::func();
+    //pub_mod::priv_fun();
+    //first_layer::priv_mod::func();
 }
